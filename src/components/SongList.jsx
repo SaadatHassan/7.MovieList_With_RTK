@@ -1,12 +1,25 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { createRandomSong } from "../data";
+import { addSong, removeSong } from "../store";
+import { store } from "../store";
 
 export const SongList = () => {
-  const songList = [];
+  const dispatch = useDispatch();
 
-  const handleAddSong = (song) => {};
+  const songList = useSelector((state) => state.songs); //this state is the whole state object
 
-  const handleRemoveSong = (song) => {};
+  const handleAddSong = (song) => {
+    // const action = addSong(song);
+    // dispatch(action);
+    dispatch(addSong(song)); //argument to addSong is payload
+
+    console.log(JSON.stringify(store.getState()));
+  };
+
+  const handleRemoveSong = (song) => {
+    dispatch(removeSong(song));
+  };
 
   const renderedSongs = songList.map((song, index) => {
     return (

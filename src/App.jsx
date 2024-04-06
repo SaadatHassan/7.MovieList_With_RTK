@@ -1,5 +1,6 @@
 import { MovieList } from "./components/MovieList";
 import { SongList } from "./components/SongList";
+import "./store";
 
 function App() {
   const handleReset = () => {};
